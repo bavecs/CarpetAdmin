@@ -1,0 +1,45 @@
+[
+    {
+        "id": 1,
+        "name": "Cikkszam",
+        "type": "text",
+        "dataSrc": "cikkszam"
+    },
+    {
+        "id": 2,
+        "name": "Név",
+        "type": "text",
+        "dataSrc": "title"
+    },
+    {
+        "id": 3,
+        "name": "Leírás",
+        "type": "text",
+        "dataSrc": "description"
+    },
+    {
+        "id": 4,
+        "name": "Ár",
+        "type": "number",
+        "dataSrc": "price"
+    },
+    {
+        "id": 5,
+        "name": "Képek",
+        "type": "number",
+        "dataSrc": "kepekSzama"
+    },
+    {
+        "id": 6,
+        "name": "Alak",
+        "type": "string",
+        "dataSrc": "alak"
+    },
+    {
+        "id": 7,
+        "name": "Kategória",
+        "type": "string",
+        "dataSrc": "categories"
+    }
+    
+]

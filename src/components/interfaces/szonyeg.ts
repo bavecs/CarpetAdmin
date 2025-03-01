@@ -1,0 +1,21 @@
+export default interface SzonyegInterface {
+    "id": number,
+    "cikkszam": string,
+    "title": string,
+    "description": string,
+    "price": number,
+    "discountPrice": number,
+    "alak": string,
+    "allapot": string,
+    "anyag": string[],
+    "keszites": string,
+    "szarmazasiHely": string,
+    "szin": string[],
+    "kepekSzama": number,
+    "categories": string[],
+    "width": number,
+    "height": number,
+    "gepi": boolean,
+    "futo": boolean,
+    "csomoszam": number
+  }

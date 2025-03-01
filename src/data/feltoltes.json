@@ -1,0 +1,73 @@
+
+{
+    "year": 2025,
+    "month": 2,
+    "kepeklink": "string",
+    "uploadDate": null,
+    "szonyegek": [
+        {
+            "id": 1,
+            "cikkszam": "G3732",
+            "title": "Gépi futó előszoba szőnyeg gumírozott",
+            "description": "Leírás",
+            "price": 30000,
+            "discountPrice": 15000,
+            "alak": "téglalap futó",
+            "allapot": "Új",
+            "anyag": ["Műszál"],
+            "keszites": "Gépi",
+            "szarmazasiHely": "Törökország",
+            "szin": ["bézs", "fekete", "fehér"],
+            "kepekSzama": 5,
+            "categories": ["Gépi szőnyegek"],
+            "width": 80,
+            "height": 470,
+            "gepi": false,
+            "futo": true,
+            "csomoszam": 30000
+        },
+        {
+            "id": 2,
+            "cikkszam": "G3733",
+            "title": "Gépi futó előszoba szőnyeg gumírozott",
+            "description": "Leírás",
+            "price": 30000,
+            "discountPrice": 15000,
+            "alak": "téglalap futó",
+            "allapot": "Új",
+            "anyag": ["Műszál"],
+            "keszites": "Gépi",
+            "szarmazasiHely": "Törökország",
+            "szin": ["bézs", "fekete", "fehér"],
+            "kepekSzama": 5,
+            "categories": ["Gépi szőnyegek"],
+            "width": 80,
+            "height": 470,
+            "gepi": false,
+            "futo": true,
+            "csomoszam": 30000
+        },
+        {
+            "id": 3,
+            "cikkszam": "G3734",
+            "title": "Gépi futó előszoba szőnyeg gumírozott",
+            "description": "Leírás",
+            "price": 30000,
+            "discountPrice": 15000,
+            "alak": "téglalap futó",
+            "allapot": "Új",
+            "anyag": ["Műszál"],
+            "keszites": "Gépi",
+            "szarmazasiHely": "Törökország",
+            "szin": ["bézs", "fekete", "fehér"],
+            "kepekSzama": 5,
+            "categories": ["Gépi szőnyegek"],
+            "width": 80,
+            "height": 470,
+            "gepi": false,
+            "futo": true,
+            "csomoszam": 30000
+        }
+    ]
+}
+
