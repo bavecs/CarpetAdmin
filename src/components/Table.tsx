@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import feltoltes from "../data/feltoltes.json";
 import Row from "./Row";
@@ -7,14 +7,10 @@ import ColumnInterface from "./interfaces/column";
 import SzonyegInterface from "./interfaces/szonyeg";
 import AddOutlineIcon from '@rsuite/icons/AddOutline';
 
-import { Button, ButtonToolbar, IconButton, Input, Modal } from 'rsuite';
+import { Button, IconButton, Input, Modal } from 'rsuite';
 import CSVExport from "../csvExport";
 
 
-type FromToType = {
-  from: string,
-  to: string
-}
 
 const emptySzonyeg =
 {
@@ -44,7 +40,7 @@ export default function Table() {
 
   const [openGenModal, setOpenGenModal] = useState(false);
 
-  const [activeColumns, setActiveColumns] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
+  const [activeColumns] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
 
   const [szonyegek, setSzonyegek] = useState(feltoltes.szonyegek)
 
@@ -141,7 +137,6 @@ export default function Table() {
 
     let generaltSzonyegek:SzonyegInterface[] = []
 
-    let id = newId()
     for(let i = 0; i < bunchGeneratedSzonyegek.length; i++) {
       let cikkszam = bunchGeneratedSzonyegek[i];
       
