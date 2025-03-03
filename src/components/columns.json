@@ -3,43 +3,58 @@
         "id": 1,
         "name": "Cikkszam",
         "type": "text",
-        "dataSrc": "cikkszam"
+        "dataSrc": "cikkszam",
+        "component": "Cell"
     },
     {
         "id": 2,
         "name": "Név",
         "type": "text",
-        "dataSrc": "title"
+        "dataSrc": {"title": "title", "description": "description"},
+        "component": "TitleCell"
     },
     {
         "id": 3,
-        "name": "Leírás",
-        "type": "text",
-        "dataSrc": "description"
+        "name": "Ár",
+        "type": "number",
+        "dataSrc": "price",
+        "component": "Cell"
     },
     {
         "id": 4,
-        "name": "Ár",
-        "type": "number",
-        "dataSrc": "price"
-    },
-    {
-        "id": 5,
         "name": "Képek",
         "type": "number",
-        "dataSrc": "kepekSzama"
+        "dataSrc": "kepekSzama",
+        "component": "Cell"
+    },
+    
+    {
+        "id": 5,
+        "name": "Készítés",
+        "type": "string",
+        "dataSrc": "keszites",
+        "component": "Cell"
     },
     {
         "id": 6,
         "name": "Alak",
         "type": "string",
-        "dataSrc": "alak"
+        "dataSrc": "alak",
+        "component": "Cell"
     },
     {
         "id": 7,
         "name": "Kategória",
         "type": "string",
-        "dataSrc": "categories"
+        "dataSrc": "categories",
+        "component": "Cell"
+    },
+    {
+        "id": 8,
+        "name": "Méret",
+        "type": "string",
+        "dataSrc": "width",
+        "component": "Cell"
     }
     
 ]

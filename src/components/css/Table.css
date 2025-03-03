@@ -1,0 +1,4 @@
+tr th:nth-child(1) {width: 1rem;}
+tr th:nth-child(2) {width: 30%;}
+tr th:nth-child(3) {width: 6rem;}
+tr th:nth-child(4) {width: 6rem;}

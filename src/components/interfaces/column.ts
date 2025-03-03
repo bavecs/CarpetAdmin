@@ -1,8 +1,9 @@
 import SzonyegInterface from "./szonyeg";
 
+export type ColumnDaraSrc = keyof SzonyegInterface | Partial<Record<keyof SzonyegInterface, string | number | string[] | boolean >>;
 export default interface ColumnInterface {
     "id": number,
     "name": string,
-    "type": string,
-    "dataSrc": keyof SzonyegInterface
+    dataSrc: ColumnDaraSrc,
+    "component": string
   }
