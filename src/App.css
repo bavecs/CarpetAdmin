@@ -3,7 +3,7 @@
 @import 'rsuite/dist/rsuite.min.css';
 
 #root {
-  max-width: 1280px;
+  max-width: 2000px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -15,7 +15,32 @@
   }
 }
 
-tr th:nth-child(1) {width: 1rem;}
-tr th:nth-child(2) {width: 40%;}
-tr th:nth-child(3) {width: 10rem;}
-tr th:nth-child(4) {width: 8rem;}
+td:first-child {
+  padding-left: .5rem;
+}
+td:last-child {
+  padding-right: .5rem;
+}
+
+td {
+  padding-right: .5rem;
+}
+
+#column_1  {width: 1rem;
+  }
+#column_2  {width: 30%;}
+#column_3  {
+  max-width: 7rem;
+  min-width: 4rem;
+}
+#column_4 {
+  width: 3rem;
+}
+
+#column_5 {
+  width: 5.5rem;
+}
+
+#column_11 {
+  max-width: 4rem;
+}
