@@ -39,51 +39,60 @@ export default function Row({ ActiveColumns, Szonyeg, edit, remove }: RowProps) 
         return Szonyeg[collSrc] as string | number | string[]
     }
 
+    function generateCell(column: ColumnInterface) {
+        switch (column.component) {
+            case "SelectCell":
+                return <SelectCell value={getVal(column.dataSrc) as any} key={column.id} onChange={
+                    (val: SzonyegInterface) =>
+                        edit(Szonyeg.id, { ...Szonyeg, [column.dataSrc as keyof SzonyegInterface]: val }
+                        )
+                }
+                options={column.options ?? []}
+                />
+            case "TagCell":
+                return <TagCell value={getVal(column.dataSrc) as any} key={column.id} onChange={
+                    (val: SzonyegInterface) =>
+                        edit(Szonyeg.id, { ...Szonyeg, [column.dataSrc as keyof SzonyegInterface]: val }
+                        )
+                }
+                options={column.options ?? []}
+                />
+            case "TitleCell":
+                return <TitleCell value={getVal(column.dataSrc) as any} key={column.id} onChange={
+                    (val: SzonyegInterface) =>
+                        edit(Szonyeg.id, { ...Szonyeg, title: val.title, description: val.description }
+                        )
+                } />
+            case "SizeCell":
+                return <SizeCell value={getVal(column.dataSrc) as any} key={column.id} onChange={
+                    (val: SzonyegInterface) =>
+                        edit(Szonyeg.id, { ...Szonyeg, width: val.width, height: val.height }
+                        )
+                } />
+            default:
+                return <Cell value={getVal(column.dataSrc) as any} key={column.id} onChange={
+                    (val: SzonyegInterface) =>
+                        edit(Szonyeg.id, { ...Szonyeg, [column.dataSrc as keyof SzonyegInterface]: val }
+                        )
+                } />
+
+        }
+    }
+
 
     return (
 
         <tr className="bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
             <>
                 {ActiveColumns.map(column => {
+                    if(column.id === 1) {
+                        return <th className="col-span-6 p-1 bg-white shadow-xs sm:col-span-3 shadow-gray-600">{generateCell(column)}</th>
 
-
-                    switch (column.component) {
-                        case "SelectCell":
-                            return <SelectCell value={getVal(column.dataSrc) as any} key={column.id} onChange={
-                                (val: SzonyegInterface) =>
-                                    edit(Szonyeg.id, { ...Szonyeg, [column.dataSrc as keyof SzonyegInterface]: val }
-                                    )
-                            }
-                            options={column.options ?? []}
-                            />
-                        case "TagCell":
-                            return <TagCell value={getVal(column.dataSrc) as any} key={column.id} onChange={
-                                (val: SzonyegInterface) =>
-                                    edit(Szonyeg.id, { ...Szonyeg, [column.dataSrc as keyof SzonyegInterface]: val }
-                                    )
-                            }
-                            options={column.options ?? []}
-                            />
-                        case "TitleCell":
-                            return <TitleCell value={getVal(column.dataSrc) as any} key={column.id} onChange={
-                                (val: SzonyegInterface) =>
-                                    edit(Szonyeg.id, { ...Szonyeg, title: val.title, description: val.description }
-                                    )
-                            } />
-                        case "SizeCell":
-                            return <SizeCell value={getVal(column.dataSrc) as any} key={column.id} onChange={
-                                (val: SzonyegInterface) =>
-                                    edit(Szonyeg.id, { ...Szonyeg, width: val.width, height: val.height }
-                                    )
-                            } />
-                        default:
-                            return <Cell value={getVal(column.dataSrc) as any} key={column.id} onChange={
-                                (val: SzonyegInterface) =>
-                                    edit(Szonyeg.id, { ...Szonyeg, [column.dataSrc as keyof SzonyegInterface]: val }
-                                    )
-                            } />
+                    } else {
+                        return <td className="col-span-6 p-1 sm:col-span-3">{generateCell(column)}</td>
 
                     }
+                    
 
                 }
 

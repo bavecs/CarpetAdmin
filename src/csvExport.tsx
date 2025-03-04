@@ -42,10 +42,10 @@ export default function CSVExport(szonyegek:SzonyegInterface[], imageFolderUrl:s
             "col_3": szonyeg.cikkszam,
             "col_4": szonyeg.price,
             "col_5": szonyeg.discountPrice,
-            "col_6": szonyeg.alak,
+            "col_6": wooStringArray(szonyeg.alak),
             "col_7": szonyeg.allapot,
-            "col_8": szonyeg.anyag,
-            "col_9": szonyeg.alak,
+            "col_8": wooStringArray(szonyeg.anyag),
+            "col_9": wooStringArray(szonyeg.alak),
             "col_10": szonyeg.keszites,
             "col_11": szonyeg.keszites,
             "col_12": "Meret",
@@ -57,10 +57,10 @@ export default function CSVExport(szonyegek:SzonyegInterface[], imageFolderUrl:s
             "col_18": szonyeg.height,
             "col_19": szonyeg.csomoszam,
             "col_20": wooStringArray(szonyeg.title),
-            "col_21": "Négyzetméter (m²)",
-            "col_22": "Inspiraciok",
-            "col_23": "Badge ",
-            "col_24": "Badge szín"
+            "col_21": szonyeg.width * szonyeg.height / 10000,
+            "col_22": 'a:3:{i:0;s:5:"15002";i:1;s:5:"15077";i:2;s:5:"15079";}',
+            "col_23": "",
+            "col_24": ""
             }
 
             finalSzonyegArray = [...finalSzonyegArray,

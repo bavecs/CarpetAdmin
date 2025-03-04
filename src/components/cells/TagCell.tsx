@@ -15,11 +15,12 @@ import { InlineEdit, TagPicker } from "rsuite"
         <td className="col-span-6 p-1 sm:col-span-3">
             <InlineEdit
                     placeholder="Hozzáadás"
-                    style={{ width: 200 }}
+                    style={{ width: "100%", maxHeight: 100, overflowX: "hidden", overflowY: "auto" }}
                     defaultValue={CellValue}
+                    showControls={false}
                 >
     
-            <TagPicker data={TagList} value={CellValue} block placeholder="Kategóriák" size="sm" cleanable={false} onChange={e => setCellValue(e)} />
+            <TagPicker data={TagList} value={CellValue} placeholder="Válassz..." size="sm" cleanable={false} block onChange={e => setCellValue(e)} />
             </InlineEdit>
 
         </td>

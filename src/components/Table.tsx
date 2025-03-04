@@ -45,7 +45,7 @@ export default function Table() {
   const [szonyegek, setSzonyegek] = useState(feltoltes.szonyegek)
 
   const [bunchGeneratedSzonyegek, setBunchGeneratedSzonyegek] = useState<string[]>([])
-  const [bunchFromTo, setBunchFromTo] = useState({from: "0", to: "0"})
+  const [bunchFromTo, setBunchFromTo] = useState({ from: "0", to: "0" })
 
   function getActiveColumns() {
     const columns = ColumnList.filter((column) => activeColumns.includes(column.id))
@@ -97,37 +97,37 @@ export default function Table() {
     return gepi ? "G" + (max + 1) : "" + (max + 1)
   }
 
-  function FromToHandler(direction:string, value:string) {
+  function FromToHandler(direction: string, value: string) {
     if (!!!parseInt(value.replace(/\D/g, ''))) return;
 
-    let from:number = 0
-    let to:number = 0
+    let from: number = 0
+    let to: number = 0
     let gepi = false
 
-    switch(direction) {
+    switch (direction) {
       case "from":
-        gepi = ( value.indexOf("G") > -1);
+        gepi = (value.indexOf("G") > -1);
         from = parseInt(value.replace(/\D/g, ''))
-        setBunchFromTo({...bunchFromTo, from: value})
+        setBunchFromTo({ ...bunchFromTo, from: value })
         to = parseInt(bunchFromTo.to.replace(/\D/g, ''))
         break;
       case "to":
         from = parseInt(bunchFromTo.from.replace(/\D/g, ''))
         to = parseInt(value.replace(/\D/g, ''))
-        setBunchFromTo({...bunchFromTo, to: value})
+        setBunchFromTo({ ...bunchFromTo, to: value })
         break;
     }
 
 
     if (from < to) {
-      let newitems:string[] = []
+      let newitems: string[] = []
 
-      for(let i = from; i < to + 1; i++) {
-        newitems = [...newitems, (gepi ? "G" : "")+i]
+      for (let i = from; i < to + 1; i++) {
+        newitems = [...newitems, (gepi ? "G" : "") + i]
       }
 
       setBunchGeneratedSzonyegek(newitems)
-    console.log(newitems)
+      console.log(newitems)
 
     }
   }
@@ -135,12 +135,12 @@ export default function Table() {
   function generalas() {
     if (bunchGeneratedSzonyegek.length === 0) return;
 
-    let generaltSzonyegek:SzonyegInterface[] = []
+    let generaltSzonyegek: SzonyegInterface[] = []
 
-    for(let i = 0; i < bunchGeneratedSzonyegek.length; i++) {
+    for (let i = 0; i < bunchGeneratedSzonyegek.length; i++) {
       let cikkszam = bunchGeneratedSzonyegek[i];
-      
-      let newSzonyeg = {...emptySzonyeg, cikkszam: cikkszam, id: newId() + i}
+
+      let newSzonyeg = { ...emptySzonyeg, cikkszam: cikkszam, id: newId() + i }
 
       generaltSzonyegek.push(newSzonyeg)
       console.log(generaltSzonyegek)
@@ -149,7 +149,7 @@ export default function Table() {
 
     setOpenGenModal(false)
     setSzonyegek([...szonyegek, ...generaltSzonyegek])
-    
+
   }
 
   function exportHandle() {
@@ -164,8 +164,8 @@ export default function Table() {
 
       <Button onClick={() => setOpenGenModal(true)}>Cikkszám generálás</Button>
 
-      <Button  appearance="primary" disabled={szonyegek.length === 0} onClick={exportHandle}>
-            CSV EXPORT
+      <Button appearance="primary" disabled={szonyegek.length === 0} onClick={exportHandle}>
+        CSV EXPORT
       </Button>
 
 
@@ -173,51 +173,52 @@ export default function Table() {
     </div>
 
     <Modal size={400} backdrop="static" open={openGenModal} onClose={() => setOpenGenModal(false)}>
-        
-        <Modal.Body>
-          <p className="mb-2">Szőnyeg generálás, első és utolsó címkeazonosító megadásával.</p>
-          <div className="flex items-center my-3 ">
-            <Input placeholder="0000" onChange={(value) => FromToHandler("from", value)} /><span>-</span>
-            <Input placeholder="0000" onChange={(value) => FromToHandler("to", value)} />
-          </div>
-          {bunchGeneratedSzonyegek.length} darab
-          
 
-        </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={() => setOpenGenModal(false)} appearance="subtle" size="sm"> 
-            Mégse
-          </Button>
-          <Button  appearance="primary" size="sm" disabled={bunchGeneratedSzonyegek.length === 0} onClick={generalas}>
-            Generálás
-          </Button>
-        </Modal.Footer>
-      </Modal>
-
-    <div className="relative m-1 overflow-x-auto shadow-md sm:rounded-lg">
+      <Modal.Body>
+        <p className="mb-2">Szőnyeg generálás, első és utolsó címkeazonosító megadásával.</p>
+        <div className="flex items-center my-3 ">
+          <Input placeholder="0000" onChange={(value) => FromToHandler("from", value)} /><span>-</span>
+          <Input placeholder="0000" onChange={(value) => FromToHandler("to", value)} />
+        </div>
+        {bunchGeneratedSzonyegek.length} darab
 
 
-      <table className="w-full text-sm text-left text-gray-500 rtl:text-right dark:text-gray-400">
-        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-          <tr className="my-3 h-[3rem]">
-            {
-              getActiveColumns().map(col => <th scope="col" id={"column_"+col.id} className="!p-[.5rem]">{col.name}</th>)
-            }
-            <th scope="col" className="px-6 py-3"></th>
-          </tr>
-        </thead>
-        <tbody>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button onClick={() => setOpenGenModal(false)} appearance="subtle" size="sm">
+          Mégse
+        </Button>
+        <Button appearance="primary" size="sm" disabled={bunchGeneratedSzonyegek.length === 0} onClick={generalas}>
+          Generálás
+        </Button>
+      </Modal.Footer>
+    </Modal>
 
-          {szonyegek && szonyegek.map(szonyeg =>
-            <Row Szonyeg={szonyeg} ActiveColumns={getActiveColumns()} edit={editSzonyeg} remove={removeSzonyeg} />
-          )}
+    <div className="relative m-1 overflow-x-auto shadow-md sm:rounded-lg max-w-[80vw]">
+
+      <div className="overflow-auto">
+        <table className="w-full text-sm text-left text-gray-500 table-fixed rtl:text-right dark:text-gray-400 min-w-[2000px]">
+          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr className="my-3 h-[3rem]">
+              {
+                getActiveColumns().map(col => <th scope="col" id={"column_" + col.id} className="!p-[.5rem]">{col.name}</th>)
+              }
+              <th scope="col" className="px-6 py-3"></th>
+            </tr>
+          </thead>
+          <tbody>
+
+            {szonyegek && szonyegek.map(szonyeg =>
+              <Row Szonyeg={szonyeg} ActiveColumns={getActiveColumns()} edit={editSzonyeg} remove={removeSzonyeg} />
+            )}
 
 
 
 
-        </tbody>
-        
-      </table>
+          </tbody>
+
+        </table>
+      </div>
       <IconButton icon={<AddOutlineIcon />} onClick={addSzonyeg} > Szőnyeg hozzáadás</IconButton>
 
     </div>
