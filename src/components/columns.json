@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "name": "Cikkszam",
+        "name": "C.szam",
         "type": "text",
         "dataSrc": "cikkszam",
         "component": "Cell"
@@ -33,45 +33,128 @@
         "name": "Készítés",
         "type": "string",
         "dataSrc": "keszites",
-        "component": "Cell"
+        "component": "SelectCell",
+        "options": [
+            "Vegyes",
+            "Gépi",
+            "Kézi",
+            "Kézi Szőttes"
+        ]
     },
     {
         "id": 6,
-        "name": "Alak",
-        "type": "string",
-        "dataSrc": "alak",
-        "component": "Cell"
+        "name": "Anyag",
+        "type": "array",
+        "dataSrc": "anyag",
+        "component": "TagCell",
+        "options": [
+            "Gyapjú",
+            "Selyem",
+            "Műszál",
+            "Vegyes"
+        ]
     },
     {
         "id": 7,
-        "name": "Kategória",
-        "type": "array",
-        "dataSrc": "categories",
-        "component": "TagCell"
+        "name": "Alak",
+        "type": "string",
+        "dataSrc": "alak",
+        "component": "SelectCell",
+        "options":[
+            "négyzet",
+            "téglalap",
+            "futó téglalap",
+            "ovális",
+            "kör"
+        ]
     },
     {
         "id": 8,
+        "name": "Kategória",
+        "type": "array",
+        "dataSrc": "categories",
+        "component": "TagCell",
+        "options": ["Kelimek(kézi szőttes)", "Kézi csomózású", "Gépi szőnyegek", "• Legnépszerűbbek"]
+    },
+    {
+        "id": 9,
         "name": "Méret",
         "type": "number",
         "dataSrc": {"width": 0, "height": 0},
         "component": "SizeCell"
     },
     {
-        "id": 9,
+        "id": 10,
         "name": "Színek",
         "type": "string",
         "dataSrc": "szin",
-        "component": "Cell"
-    },
-    {
-        "id": 10,
-        "name": "Származási hely",
-        "type": "string",
-        "dataSrc": "szarmazasiHely",
-        "component": "Cell"
+        "component": "TagCell",
+        "options": ["bézs", "fekete", "fehér", "natúr", "piros", "kék", "zöld"]
     },
     {
         "id": 11,
+        "name": "Származási hely",
+        "type": "string",
+        "dataSrc": "szarmazasiHely",
+        "component": "SelectCell",
+        "options": [
+            "Afganisztán",
+            "Albánia",
+            "Algéria",
+            "Andorra",
+            "Angola",
+            "Argentína",
+            "Örményország",
+            "Ausztrália",
+            "Ausztria",
+            "Azerbajdzsán",
+            "Bahama-szigetek",
+            "Banglades",
+            "Belgium",
+            "Brazília",
+            "Bulgária",
+            "Kanada",
+            "Kína",
+            "Horvátország",
+            "Csehország",
+            "Dánia",
+            "Egyiptom",
+            "Észtország",
+            "Finnország",
+            "Franciaország",
+            "Németország",
+            "Görögország",
+            "Magyarország",
+            "Izland",
+            "India",
+            "Indonézia",
+            "Olaszország",
+            "Japán",
+            "Kenya",
+            "Mexikó",
+            "Hollandia",
+            "Norvégia",
+            "Lengyelország",
+            "Portugália",
+            "Románia",
+            "Oroszország",
+            "Szaúd-Arábia",
+            "Szerbia",
+            "Szlovákia",
+            "Szlovénia",
+            "Dél-Afrika",
+            "Spanyolország",
+            "Svédország",
+            "Svájc",
+            "Törökország",
+            "Ukrajna",
+            "Egyesült Királyság",
+            "Amerikai Egyesült Államok",
+            "Európai"
+          ]
+    },
+    {
+        "id": 12,
         "name": "Csomó szám",
         "type": "number",
         "dataSrc": "csomoszam",

@@ -27,7 +27,7 @@ const emptySzonyeg =
   "szarmazasiHely": "",
   "szin": [],
   "kepekSzama": 6,
-  "categories": [],
+  "categories": ["• Legnépszerűbbek"],
   "width": 0,
   "height": 0,
   "gepi": false,
@@ -201,7 +201,7 @@ export default function Table() {
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr className="my-3 h-[3rem]">
             {
-              getActiveColumns().map(col => <th scope="col" id={"column_"+col.id} className="!p-[1rem]">{col.name}</th>)
+              getActiveColumns().map(col => <th scope="col" id={"column_"+col.id} className="!p-[.5rem]">{col.name}</th>)
             }
             <th scope="col" className="px-6 py-3"></th>
           </tr>

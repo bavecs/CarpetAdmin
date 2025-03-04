@@ -26,12 +26,11 @@ td {
   padding-right: .5rem;
 }
 
-#column_1  {width: 1rem;
+#column_1  {width: 69px;
   }
-#column_2  {width: 30%;}
+#column_2  {width: 20%;}
 #column_3  {
-  max-width: 7rem;
-  min-width: 4rem;
+  width: 80px;
 }
 #column_4 {
   width: 3rem;

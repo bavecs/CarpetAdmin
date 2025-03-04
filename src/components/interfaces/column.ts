@@ -5,5 +5,6 @@ export default interface ColumnInterface {
     "id": number,
     "name": string,
     dataSrc: ColumnDaraSrc,
-    "component": string
+    "component": string,
+    "options"?: string[]
   }

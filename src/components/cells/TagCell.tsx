@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react"
-import { TagPicker } from "rsuite"
+import { InlineEdit, TagPicker } from "rsuite"
 
-const ketegoriak = ['Kelimek(kézi szőttes)', 'Kézi csomózású', 'Gépi szőnyegek', '• Legnépszerűbbek',].map(
-    item => ({ label: item, value: item })
-  );
 
- export default function TagCell({ value, onChange }: { value: string[], onChange: any }) {
+
+ export default function TagCell({ value, onChange, options }: { value: string[], onChange: any, options: string[] }) {
+    const TagList = options.map(item => ({ label: item, value: item }))
     const [CellValue, setCellValue] = useState(value)
     
     useEffect(() => {
@@ -14,7 +13,14 @@ const ketegoriak = ['Kelimek(kézi szőttes)', 'Kézi csomózású', 'Gépi sző
 
     return (
         <td className="col-span-6 p-1 sm:col-span-3">
-            <TagPicker data={ketegoriak} value={CellValue} block placeholder="Kategóriák" size="sm" onChange={e => setCellValue(e)} />
+            <InlineEdit
+                    placeholder="Hozzáadás"
+                    style={{ width: 200 }}
+                    defaultValue={CellValue}
+                >
+    
+            <TagPicker data={TagList} value={CellValue} block placeholder="Kategóriák" size="sm" cleanable={false} onChange={e => setCellValue(e)} />
+            </InlineEdit>
 
         </td>
 

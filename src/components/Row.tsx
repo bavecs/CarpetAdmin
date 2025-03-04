@@ -4,6 +4,7 @@ import TitleCell from "./cells/TitleCell"
 import Cell from "./cells/Cell"
 import SizeCell from "./cells/SizeCell"
 import TagCell from "./cells/TagCell"
+import SelectCell from "./cells/SelectCell"
 
 
 interface RowProps {
@@ -47,12 +48,22 @@ export default function Row({ ActiveColumns, Szonyeg, edit, remove }: RowProps) 
 
 
                     switch (column.component) {
+                        case "SelectCell":
+                            return <SelectCell value={getVal(column.dataSrc) as any} key={column.id} onChange={
+                                (val: SzonyegInterface) =>
+                                    edit(Szonyeg.id, { ...Szonyeg, [column.dataSrc as keyof SzonyegInterface]: val }
+                                    )
+                            }
+                            options={column.options ?? []}
+                            />
                         case "TagCell":
                             return <TagCell value={getVal(column.dataSrc) as any} key={column.id} onChange={
                                 (val: SzonyegInterface) =>
                                     edit(Szonyeg.id, { ...Szonyeg, [column.dataSrc as keyof SzonyegInterface]: val }
                                     )
-                            } />
+                            }
+                            options={column.options ?? []}
+                            />
                         case "TitleCell":
                             return <TitleCell value={getVal(column.dataSrc) as any} key={column.id} onChange={
                                 (val: SzonyegInterface) =>
