@@ -8,7 +8,7 @@ export default function SizeCell({ value, onChange }: { value: { width: number, 
     }, [CellValue])
 
     return (
-        <td className="col-span-6 p-1 sm:col-span-3">
+        <div className="col-span-6 p-1 sm:col-span-3">
             <div className="flex flex-row items-center justify-center h-full">
 
             <input
@@ -28,7 +28,7 @@ export default function SizeCell({ value, onChange }: { value: { width: number, 
             
             </div>
 
-        </td>
+        </div>
 
     )
 }

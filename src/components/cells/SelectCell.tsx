@@ -1,5 +1,5 @@
 import {  useEffect, useState } from "react"
-import { InlineEdit, SelectPicker } from "rsuite"
+import { SelectPicker } from "rsuite"
 
 type ValueType = string | number;
 
@@ -13,14 +13,8 @@ export default function SelectCell({ value, onChange, options }: { value: ValueT
     }, [CellValue])
 
     return (
-        <InlineEdit
-            placeholder="Hozzáadás"
-            style={{ width: "100%"}}
-            defaultValue={CellValue}
-            showControls={false}
-        >            
-            <SelectPicker data={SelectList as any} block value={CellValue} placeholder="Válassz" size="sm" cleanable={false}  onChange={value => setCellValue(value as ValueType)} />
-        </InlineEdit>
+       
+            <SelectPicker data={SelectList as any} block style={{ width: "100%"}} value={CellValue} placeholder="Válassz" size="sm" cleanable={false}  onChange={value => setCellValue(value as ValueType)} />
 
     )
 }

@@ -40,7 +40,7 @@ export default function Table() {
 
   const [openGenModal, setOpenGenModal] = useState(false);
 
-  const [activeColumns] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
+  const [activeColumns] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13])
 
   const [szonyegek, setSzonyegek] = useState(feltoltes.szonyegek)
 
@@ -143,7 +143,6 @@ export default function Table() {
       let newSzonyeg = { ...emptySzonyeg, cikkszam: cikkszam, id: newId() + i }
 
       generaltSzonyegek.push(newSzonyeg)
-      console.log(generaltSzonyegek)
 
     }
 
@@ -196,9 +195,9 @@ export default function Table() {
 
     <div className="relative m-1 overflow-x-auto shadow-md sm:rounded-lg max-w-[80vw]">
 
-      <div className="overflow-auto">
-        <table className="w-full text-sm text-left text-gray-500 table-fixed rtl:text-right dark:text-gray-400 min-w-[2000px]">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <div id="tableWrapper" className="overflow-auto">
+        <table className="w-full text-sm text-left text-gray-500 table-fixed min-w-[2500px]">
+          <thead className="text-white uppercase bg-blue-600 ">
             <tr className="my-3 h-[3rem]">
               {
                 getActiveColumns().map(col => <th scope="col" id={"column_" + col.id} className="!p-[.5rem]">{col.name}</th>)

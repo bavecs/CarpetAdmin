@@ -27,41 +27,56 @@ td {
 }
 
 #column_1  {width: 69px;
-  background: oklch(0.99 0.002 240.939);
+  @apply bg-blue-700
   }
-#column_2  {width: 20%;
-  background: oklch(0.985 0.002 247.839);}
+#column_2  {width: 70px;
+ }
 #column_3  {
-  width: 80px;
+  width: 365px
+  
 }
 #column_4 {
-  width: 3rem;
+  width: 100px;
 }
 
 
 
 #column_5 {
-  width: 132px;
+  width: 30px;
+  
 }
 #column_6 {
-  width: 220px;
+  width: 132px;
+  
 }
 #column_7 {
-  width: 130px;
+  width: 70px;
+  
 }
 #column_8 {
-  width: 250px;
+  width: 130px;
+  
 }
 
 #column_9 {
-  width: 110px;
+  width: 250px;
+  
 }
 #column_10 {
-  width: 300px;
+  width: 150px;
+  
 }
 
 #column_11 {
-  max-width: 150px;
+  width: 300px;
+  
+}
+#column_12 {
+  width: 145px;
+}
+
+#column_13 {
+  width: 300px;
 }
 
 thead,
@@ -82,4 +97,17 @@ tr>th input {
 }
 thead tr>th:first-child {
   z-index: 3;
+  
+}
+
+tbody th {
+  @apply bg-gray-50 z-10
+}
+
+tbody tr:has(*:focus) {
+  @apply bg-blue-100
+}
+
+tbody, tr:has(*:focus) th {
+  @apply bg-blue-200
 }
