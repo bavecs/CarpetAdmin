@@ -10,7 +10,7 @@ import AddOutlineIcon from '@rsuite/icons/AddOutline';
 import { Button, IconButton, Input, Modal } from 'rsuite';
 import CSVExport from "../csvExport";
 
-
+import { useRef } from 'react';
 
 const emptySzonyeg =
 {
@@ -155,6 +155,20 @@ export default function Table() {
     CSVExport(szonyegek, "https://kabiriszonyeghaz.hu/wp-content/uploads")
   }
 
+  const tableWrapperRef = useRef(null);
+
+
+  function horizontalScoll(e: any) {
+    let tw = document.querySelector("#tableWrapper")
+    if (!tw) return
+    if(e.deltaY < 0) {
+      
+      tw.scrollLeft -=30
+    } else {
+      tw.scrollLeft +=30
+    }
+  }
+
 
 
   return (<>
@@ -195,7 +209,7 @@ export default function Table() {
 
     <div className="relative m-1 overflow-x-auto shadow-md sm:rounded-lg max-w-[80vw]">
 
-      <div id="tableWrapper" className="overflow-auto">
+      <div id="tableWrapper" ref={tableWrapperRef} className="overflow-auto" onWheel={horizontalScoll}>
         <table className="w-full text-sm text-left text-gray-500 table-fixed min-w-[2500px]">
           <thead className="text-white uppercase bg-blue-600 ">
             <tr className="my-3 h-[3rem]">
