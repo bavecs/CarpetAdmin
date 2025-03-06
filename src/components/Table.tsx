@@ -10,7 +10,6 @@ import AddOutlineIcon from '@rsuite/icons/AddOutline';
 import { Button, IconButton, Input, Modal, SelectPicker } from 'rsuite';
 import CSVExport from "../csvExport";
 
-import meretek from "../data/meretek.json"
 
 import { useRef } from 'react';
 
@@ -185,9 +184,6 @@ export default function Table() {
     }
   }
 
-  function bevitelHandle(e: number[]) {
-    setActiveColumns(e)
-  }
 
 
 

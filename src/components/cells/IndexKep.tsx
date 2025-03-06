@@ -2,7 +2,7 @@
 import CarpetIcon from "../../../public/carpet-2.png"
 import CartpetError from "../../../public/carpet-2-error.png"
 
-export default function IndexKep({ value, onChange }: { value: { kepekSzama: number, cikkszam: string }, onChange: any }) {
+export default function IndexKep({ value }: { value: { kepekSzama: number, cikkszam: string }, onChange: any }) {
     const {kepekSzama, cikkszam} = value
 
     let image = CarpetIcon
