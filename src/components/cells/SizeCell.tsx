@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react"
+import getSize from "../../lib/getSize"
+import { Input, InputGroup } from "rsuite"
 
 export default function SizeCell({ value, onChange }: { value: { width: number, height: number }, onChange: any }) {
 
@@ -7,26 +9,21 @@ export default function SizeCell({ value, onChange }: { value: { width: number, 
         onChange(CellValue)
     }, [CellValue])
 
-    return (
-        <div className="col-span-6 p-1 sm:col-span-3">
-            <div className="flex flex-row items-center justify-center h-full">
+    const styles = {
+        width: 150,
+        marginBottom: 2
+      };
 
-            <input
-                onChange={e => setCellValue({ ...CellValue, width: parseInt(e.target.value) })}
-                type="number" value={CellValue.width}
-                className="mr-2 w-[3rem] text-right !text-black right-0 focus:border-sky-200 focus:outline focus:outline-sky-200 block p-1  "
-                placeholder="0 cm"
-                />
-            <span className="m-1 text-black">x</span>
-            <input
-                onChange={e => setCellValue({ ...CellValue, height: parseInt(e.target.value) })}
-                type="number" value={CellValue.height}
-                className="mr-2 w-[3rem] !text-black  focus:border-sky-200 focus:outline focus:outline-sky-200 block  p-1 "
-                placeholder="0 cm"
-                />
-            
-            
-            </div>
+    return (
+        <div className="relative col-span-6 p-1 sm:col-span-3">
+               <InputGroup style={styles}>
+                <Input type="number" placeholder="Sz" value={CellValue.width} size="sm" onChange={e => setCellValue({ ...CellValue, width: parseInt(e) })} />
+                <InputGroup.Addon>x</InputGroup.Addon>
+                <Input type="number" placeholder="H" value={CellValue.height} size="sm" onChange={e => setCellValue({ ...CellValue, height: parseInt(e) })} />
+                </InputGroup>
+
+
+            <p  style={styles} className="overflow-hidden text-black h-[15px] text-[12px] absolute top-[39px] left-2">{getSize(CellValue.width, CellValue.height)}</p>
 
         </div>
 

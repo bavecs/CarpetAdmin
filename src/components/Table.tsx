@@ -7,8 +7,10 @@ import ColumnInterface from "./interfaces/column";
 import SzonyegInterface from "./interfaces/szonyeg";
 import AddOutlineIcon from '@rsuite/icons/AddOutline';
 
-import { Button, IconButton, Input, Modal } from 'rsuite';
+import { Button, IconButton, Input, Modal, SelectPicker } from 'rsuite';
 import CSVExport from "../csvExport";
+
+import meretek from "../data/meretek.json"
 
 import { useRef } from 'react';
 
@@ -35,12 +37,26 @@ const emptySzonyeg =
   "csomoszam": 0
 }
 
+const beviteliMod = [
+  {
+    label: "Címke adatok",
+    value: [1, 2, 4, 7, 10, 12, 13]
+  },
+  {
+    label: "Szőnyeg adatok",
+    value: [1, 2, 3, 5, 6, 8, 9, 11, 14, 15]
+  },
+  {
+    label: "Összes oszlop",
+    value: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+  }
+]
 
 export default function Table() {
 
   const [openGenModal, setOpenGenModal] = useState(false);
 
-  const [activeColumns] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13])
+  const [activeColumns, setActiveColumns] = useState(beviteliMod[0].value)
 
   const [szonyegek, setSzonyegek] = useState(feltoltes.szonyegek)
 
@@ -169,13 +185,19 @@ export default function Table() {
     }
   }
 
+  function bevitelHandle(e: number[]) {
+    setActiveColumns(e)
+  }
+
 
 
   return (<>
 
-    <div className="flex justify-between mb-4">
+    <div className="flex justify-between my-4">
 
       <Button onClick={() => setOpenGenModal(true)}>Cikkszám generálás</Button>
+
+      <SelectPicker label="Bevitel" searchable={false}  defaultValue={beviteliMod[0]} onChange={(e: any) => setActiveColumns(e)} data={beviteliMod as any} style={{ width: 224 }} />
 
       <Button appearance="primary" disabled={szonyegek.length === 0} onClick={exportHandle}>
         CSV EXPORT
@@ -232,9 +254,10 @@ export default function Table() {
 
         </table>
       </div>
-      <IconButton icon={<AddOutlineIcon />} onClick={addSzonyeg} > Szőnyeg hozzáadás</IconButton>
+
 
     </div>
+    <IconButton className="!mt-4 " appearance="primary" icon={<AddOutlineIcon />} onClick={addSzonyeg} > Szőnyeg hozzáadás</IconButton>
   </>
 
   )
