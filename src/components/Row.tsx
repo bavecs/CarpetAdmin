@@ -6,6 +6,8 @@ import SizeCell from "./cells/SizeCell"
 import TagCell from "./cells/TagCell"
 import SelectCell from "./cells/SelectCell"
 import IndexKep from "./cells/IndexKep"
+import { IconButton } from "rsuite"
+import TrashIcon from '@rsuite/icons/Trash';
 
 
 interface RowProps {
@@ -88,7 +90,7 @@ export default function Row({ ActiveColumns, Szonyeg, edit, remove }: RowProps) 
 
 
     return (
-
+<>
         <tr className="bg-white border-b border-gray-200 hover:bg-gray-50">
             <>
                 {ActiveColumns.map(column => {
@@ -106,13 +108,10 @@ export default function Row({ ActiveColumns, Szonyeg, edit, remove }: RowProps) 
 
                 )}</>
 
-            <td className="col-span-3 sm:col-span-3">
-                <button className="!text-xs text-red-500 m-1" onClick={() => remove(Szonyeg.id)}>Törlés</button>
-            </td>
-
 
         </tr>
-
+        <IconButton circle icon={<TrashIcon />} color="red" appearance="default" onClick={() => remove(Szonyeg.id)} />
+        </>
     )
 
 }
