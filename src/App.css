@@ -24,11 +24,16 @@ td:first-child {
   padding-left: .5rem;
 }
 td:last-child {
-  padding-right: .5rem;
+  padding:0
 }
 
 td {
   padding-right: .5rem;
+}
+
+
+tr {
+  width: 100%;
 }
 
 #column_1  {width: 69px;
@@ -51,7 +56,7 @@ td {
   
 }
 #column_6 {
-  width: 132px;
+  width: 108px;
   
 }
 #column_7 {
@@ -64,7 +69,7 @@ td {
 }
 
 #column_9 {
-  width: 250px;
+  width: 170px;
   
 }
 #column_10 {
@@ -83,10 +88,22 @@ td {
 #column_13 {
   width: 300px;
 }
+#column_15 {
+  width: 115px;
+}
 
 thead,
 tr>th {
   position: sticky !important;
+}
+
+table {
+  width: max-content;
+}
+
+tr {
+  align-content: space-around;
+  position: relative;
 }
 
 thead {
@@ -105,6 +122,12 @@ thead tr>th:first-child {
   
 }
 
+.trash-c {
+  width:64px;
+  height:100%;
+  align-content: space-around;
+  background: white;
+}
 
 tbody th {
   @apply bg-gray-50 z-10

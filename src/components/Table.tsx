@@ -3,12 +3,13 @@ import { useState } from "react";
 import feltoltes from "../data/feltoltes.json";
 import Row from "./Row";
 import ColumnList from "./columns.json";
-import ColumnInterface from "./interfaces/column";
-import SzonyegInterface from "./interfaces/szonyeg";
+import ColumnInterface from "./interfaces/ColumnInterface";
+import SzonyegInterface from "./interfaces/SzonyegInterface";
 import AddOutlineIcon from '@rsuite/icons/AddOutline';
 
 import { Button, IconButton, Input, Modal, SelectPicker } from 'rsuite';
 import CSVExport from "../csvExport";
+import beviteliModok from "../data/beviteliModOszlopok.json"
 
 
 import { useRef } from 'react';
@@ -21,10 +22,10 @@ const emptySzonyeg =
   "description": "",
   "price": 0,
   "discountPrice": 0,
-  "alak": "",
-  "allapot": "",
+  "alak": "téglalap",
+  "allapot": "Új",
   "anyag": [],
-  "keszites": "",
+  "keszites": "Kézi",
   "szarmazasiHely": "",
   "szin": [],
   "kepekSzama": 6,
@@ -36,26 +37,13 @@ const emptySzonyeg =
   "csomoszam": 0
 }
 
-const beviteliMod = [
-  {
-    label: "Címke adatok",
-    value: [1, 2, 4, 7, 10, 12, 13]
-  },
-  {
-    label: "Szőnyeg adatok",
-    value: [1, 2, 3, 5, 6, 8, 9, 11, 14, 15]
-  },
-  {
-    label: "Összes oszlop",
-    value: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-  }
-]
 
 export default function Table() {
 
   const [openGenModal, setOpenGenModal] = useState(false);
 
-  const [activeColumns, setActiveColumns] = useState(beviteliMod[0].value)
+
+  const [activeColumns, setActiveColumns] = useState(beviteliModok[0].value)
 
   const [szonyegek, setSzonyegek] = useState(feltoltes.szonyegek)
 
@@ -184,6 +172,10 @@ export default function Table() {
     }
   }
 
+  function bevitelHandle(e:any) {
+    console.log(e)
+  }
+
 
 
 
@@ -193,7 +185,7 @@ export default function Table() {
 
       <Button onClick={() => setOpenGenModal(true)}>Cikkszám generálás</Button>
 
-      <SelectPicker label="Bevitel" searchable={false}  defaultValue={beviteliMod[0]} onChange={(e: any) => setActiveColumns(e)} data={beviteliMod as any} style={{ width: 224 }} />
+      <SelectPicker label="Bevitel" searchable={false} value={activeColumns} cleanable={false} onChange={e => setActiveColumns(e as any)} data={beviteliModok} style={{ width: 224 }} />
 
       <Button appearance="primary" disabled={szonyegek.length === 0} onClick={exportHandle}>
         CSV EXPORT
@@ -227,12 +219,12 @@ export default function Table() {
 
     <div className="relative m-1 overflow-x-auto shadow-md sm:rounded-lg max-w-[80vw]">
 
-      <div id="tableWrapper" ref={tableWrapperRef} className="overflow-auto" onWheel={horizontalScoll}>
-        <table className="w-full text-sm text-left text-gray-500 table-fixed min-w-[2500px]">
+      <div id="tableWrapper" ref={tableWrapperRef} className="overflow-auto" >
+        <table className="w-full text-sm text-left text-gray-500 table-fixed ">
           <thead className="text-white uppercase bg-blue-600 ">
             <tr className="my-3 h-[3rem]">
               {
-                getActiveColumns().map(col => <th scope="col" id={"column_" + col.id} className="!p-[.5rem]">{col.name}</th>)
+                getActiveColumns().map(col => <th scope="col" key={"column_" + col.id} id={"column_" + col.id} className="!p-[.5rem]">{col.name}</th>)
               }
               <th scope="col" className="px-6 py-3"></th>
             </tr>
@@ -240,7 +232,7 @@ export default function Table() {
           <tbody>
 
             {szonyegek && szonyegek.map(szonyeg =>
-              <Row Szonyeg={szonyeg} ActiveColumns={getActiveColumns()} edit={editSzonyeg} remove={removeSzonyeg} />
+              <Row key={szonyeg.id} Szonyeg={szonyeg} ActiveColumns={getActiveColumns()} edit={editSzonyeg} remove={removeSzonyeg} />
             )}
 
 

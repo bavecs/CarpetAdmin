@@ -7,5 +7,10 @@ export function wooStringArray(array: string | string[], uncapitalize = true) {
 }
 
 export function quotedString(string:string) {
-    return`"${string}"`;
+    string = removeLineBreaks(string)
+    return `"${string}"`;
+}
+
+export function removeLineBreaks(string:string) {
+    return string.replace(/(\r\n|\n|\r)/gm, "");
 }

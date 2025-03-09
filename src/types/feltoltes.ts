@@ -1,4 +1,4 @@
-import SzonyegInterface from "../components/interfaces/szonyeg"
+import SzonyegInterface from "../components/interfaces/SzonyegInterface"
 
 export default interface FeloltesInterface {
     year: number,

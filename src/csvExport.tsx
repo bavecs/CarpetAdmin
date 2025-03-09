@@ -1,4 +1,4 @@
-import SzonyegInterface from "./components/interfaces/szonyeg";
+import SzonyegInterface from "./components/interfaces/SzonyegInterface";
 import getImages from "./lib/getPhotoUrls";
 import { quotedString, wooStringArray } from "./lib/stringTools";
 

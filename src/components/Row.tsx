@@ -1,5 +1,5 @@
-import ColumnInterface, { ColumnDaraSrc } from "./interfaces/column"
-import SzonyegInterface from "./interfaces/szonyeg"
+import ColumnInterface, { ColumnDataSrc } from "./interfaces/ColumnInterface"
+import SzonyegInterface from "./interfaces/SzonyegInterface"
 import TitleCell from "./cells/TitleCell"
 import Cell from "./cells/Cell"
 import SizeCell from "./cells/SizeCell"
@@ -21,9 +21,7 @@ interface RowProps {
 
 export default function Row({ ActiveColumns, Szonyeg, edit, remove }: RowProps) {
 
-    function getVal(collSrc: ColumnDaraSrc) {
-
-
+    function getVal(collSrc: ColumnDataSrc) {
 
         if (typeof collSrc === "object") {
 
@@ -95,10 +93,10 @@ export default function Row({ ActiveColumns, Szonyeg, edit, remove }: RowProps) 
             <>
                 {ActiveColumns.map(column => {
                     if(column.id === 1) {
-                        return <th className="col-span-6 p-1" >{generateCell(column)}</th>
+                        return <th key={"col_"+column.id} className="col-span-6 p-1" >{generateCell(column)}</th>
 
                     } else {
-                        return <td className="col-span-6 p-1 sm:col-span-3">{generateCell(column)}</td>
+                        return <td key={"col_"+column.id} className="col-span-6 p-1 sm:col-span-3">{generateCell(column)}</td>
 
                     }
                     
@@ -109,8 +107,12 @@ export default function Row({ ActiveColumns, Szonyeg, edit, remove }: RowProps) 
                 )}</>
 
 
+                <td className="trash-c sticky right-0 z-30 rounded-tl rounded-bl">
+                <IconButton circle icon={<TrashIcon />} color="red" className=" !mx-3 h-full " appearance="link" onClick={() => remove(Szonyeg.id)} />
+
+                </td>
+
         </tr>
-        <IconButton circle icon={<TrashIcon />} color="red" appearance="default" onClick={() => remove(Szonyeg.id)} />
         </>
     )
 

@@ -94,7 +94,7 @@
         "id": 12,
         "name": "Méret",
         "type": "number",
-        "dataSrc": {"width": 0, "height": 0},
+        "dataSrc": {"width": "width", "height": "height"},
         "component": "SizeCell"
     },
     {
