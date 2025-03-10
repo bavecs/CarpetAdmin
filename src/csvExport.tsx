@@ -1,3 +1,4 @@
+import { useGlobalData } from "./components/GlobalDataContext";
 import SzonyegInterface from "./components/interfaces/SzonyegInterface";
 import getImages from "./lib/getPhotoUrls";
 import { quotedString, wooStringArray } from "./lib/stringTools";
@@ -31,7 +32,14 @@ const oszlopok = {
 
 export default function CSVExport(szonyegek:SzonyegInterface[], imageFolderUrl:string) {
 
+
     let finalSzonyegArray:any[] = []
+
+    if(!imageFolderUrl) {
+        alert('Nincs érvényes kép url ')
+        console.log({useGlobalData})
+        return
+    }
 
     szonyegek.forEach((szonyeg) => {
         let images = getImages(szonyeg.kepekSzama, imageFolderUrl, szonyeg.cikkszam)
@@ -72,13 +80,16 @@ export default function CSVExport(szonyegek:SzonyegInterface[], imageFolderUrl:s
     const csvString = [oszlopokArray, ...finalSzonyegArray].join("\n");
 
 
-      var element = document.createElement('a');
+    var element = document.createElement('a');
     element.href = 'data:text/csv;charset=utf-8,' + encodeURI(csvString);
     element.target = '_blank';
-    element.download = 'export.csv';
+
+
+    const date = new Date()
+    const dateString = date.getFullYear().toString()   + ".0" + (date.getMonth() + 1).toString() + "." +date.getDate().toString()
+
+
+    element.download = szonyegek.length + 'db_export_' + dateString + '.csv'
     element.click();
  
-
-    console.log(csvString)
-
 }

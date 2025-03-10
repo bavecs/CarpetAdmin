@@ -103,7 +103,7 @@
         "type": "string",
         "dataSrc": "szin",
         "component": "TagCell",
-        "options": ["bézs", "fekete", "fehér", "natúr", "piros", "kék", "zöld"]
+        "options": ["bézs", "fekete", "fehér", "natúr", "piros", "kék", "zöld", "barna", "bordó", "szürke", "türkiz", "sárga", "narancs", "moha", "arany"]
     },
     {
         "id": 14,
@@ -164,7 +164,16 @@
             "Ukrajna",
             "Egyesült Királyság",
             "Amerikai Egyesült Államok",
-            "Európai"
+            "Európai",
+            "Erdély",
+            "Dagesztán",
+            "Pakisztán",
+            "Irán",
+            "Vietnám",
+            "Türkmenisztán",
+            "Moldova",
+            "Kaukázus",
+            "Taiwan"
           ]
     },
     {

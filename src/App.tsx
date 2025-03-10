@@ -1,18 +1,26 @@
 
 import './App.css'
+import KepekHelye from './components/KepekHelye'
 import Table from './components/Table'
+import feltoltes from "./data/feltoltes.json";
+import { GlobalDataProvider } from './components/GlobalDataContext';
 
 
 function App() {
 
+
   return (
     <>
+      <GlobalDataProvider>
       <div id="menubar">
-
+        <KepekHelye />
       </div>
       <div id="content" className="content">
-        <Table />
+        
+        <Table szonyegekJson={feltoltes.szonyegek} />
+        
       </div>
+      </GlobalDataProvider>
 
 
 
@@ -21,6 +29,7 @@ function App() {
 
         <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400"> Készítette: Vécsei Balázs | © 2025 Budapest | balazs.vecsei@gmail.com
         </span>
+        <span>Verzió: Beta 1.0</span>
         <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
           <li>
             <a href="mailto:balazs.vecsei@gmail.com" className="hover:underline me-4 md:me-6">E-mail</a>

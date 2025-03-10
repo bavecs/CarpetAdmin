@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import feltoltes from "../data/feltoltes.json";
 import Row from "./Row";
 import ColumnList from "./columns.json";
 import ColumnInterface from "./interfaces/ColumnInterface";
@@ -13,8 +12,9 @@ import beviteliModok from "../data/beviteliModOszlopok.json"
 
 
 import { useRef } from 'react';
+import { useGlobalData } from "./GlobalDataContext";
 
-const emptySzonyeg =
+const emptySzonyeg: SzonyegInterface =
 {
   "id": 0,
   "cikkszam": "",
@@ -38,17 +38,20 @@ const emptySzonyeg =
 }
 
 
-export default function Table() {
+export default function Table({szonyegekJson}: {szonyegekJson: SzonyegInterface[]}) {
 
   const [openGenModal, setOpenGenModal] = useState(false);
 
 
   const [activeColumns, setActiveColumns] = useState(beviteliModok[0].value)
 
-  const [szonyegek, setSzonyegek] = useState(feltoltes.szonyegek)
+  const [szonyegek, setSzonyegek] = useState(szonyegekJson)
 
   const [bunchGeneratedSzonyegek, setBunchGeneratedSzonyegek] = useState<string[]>([])
-  const [bunchFromTo, setBunchFromTo] = useState({ from: "0", to: "0" })
+  const [bunchFromTo, setBunchFromTo] = useState({ from: "0", to: "0", gepi: false })
+
+  const imageFolderUrl = useGlobalData().globalData.url
+
 
   function getActiveColumns() {
     const columns = ColumnList.filter((column) => activeColumns.includes(column.id))
@@ -105,13 +108,13 @@ export default function Table() {
 
     let from: number = 0
     let to: number = 0
-    let gepi = false
+    let gepi = bunchFromTo.gepi
 
     switch (direction) {
       case "from":
         gepi = (value.indexOf("G") > -1);
         from = parseInt(value.replace(/\D/g, ''))
-        setBunchFromTo({ ...bunchFromTo, from: value })
+        setBunchFromTo({ ...bunchFromTo, from: value, gepi: gepi })
         to = parseInt(bunchFromTo.to.replace(/\D/g, ''))
         break;
       case "to":
@@ -126,12 +129,10 @@ export default function Table() {
       let newitems: string[] = []
 
       for (let i = from; i < to + 1; i++) {
-        newitems = [...newitems, (gepi ? "G" : "") + i]
+        newitems = [...newitems, (bunchFromTo.gepi ? "G" : "") + i]
       }
 
       setBunchGeneratedSzonyegek(newitems)
-      console.log(newitems)
-
     }
   }
 
@@ -143,7 +144,26 @@ export default function Table() {
     for (let i = 0; i < bunchGeneratedSzonyegek.length; i++) {
       let cikkszam = bunchGeneratedSzonyegek[i];
 
-      let newSzonyeg = { ...emptySzonyeg, cikkszam: cikkszam, id: newId() + i }
+      let newSzonyeg = emptySzonyeg
+
+      if(bunchFromTo.gepi) {
+        newSzonyeg = { ...newSzonyeg,
+          gepi: bunchFromTo.gepi,
+          keszites: "Gépi",
+          categories: ["Gépi szőnyegek", "• Legnépszerűbbek"],
+          anyag: ["Műszál"],
+          cikkszam: cikkszam,
+          id: newId() + i }
+      } else {
+        newSzonyeg = { ...newSzonyeg,
+          gepi: bunchFromTo.gepi,
+          keszites: "Kézi",
+          categories: ["Kézi csomózású", "• Legnépszerűbbek"],
+          anyag: ["Gyapjú"],
+          cikkszam: cikkszam,
+          id: newId() + i }
+      }
+
 
       generaltSzonyegek.push(newSzonyeg)
 
@@ -155,13 +175,13 @@ export default function Table() {
   }
 
   function exportHandle() {
-    CSVExport(szonyegek, "https://kabiriszonyeghaz.hu/wp-content/uploads")
+    CSVExport(szonyegek, imageFolderUrl)
   }
 
   const tableWrapperRef = useRef(null);
 
 
-  function horizontalScoll(e: any) {
+/*   function horizontalScoll(e: any) {
     let tw = document.querySelector("#tableWrapper")
     if (!tw) return
     if(e.deltaY < 0) {
@@ -170,11 +190,8 @@ export default function Table() {
     } else {
       tw.scrollLeft +=30
     }
-  }
+  } */
 
-  function bevitelHandle(e:any) {
-    console.log(e)
-  }
 
 
 
@@ -200,8 +217,8 @@ export default function Table() {
       <Modal.Body>
         <p className="mb-2">Szőnyeg generálás, első és utolsó címkeazonosító megadásával.</p>
         <div className="flex items-center my-3 ">
-          <Input placeholder="0000" onChange={(value) => FromToHandler("from", value)} /><span>-</span>
-          <Input placeholder="0000" onChange={(value) => FromToHandler("to", value)} />
+          <Input type="text" placeholder="0000" onChange={(value) => FromToHandler("from", value)} /><span>-</span>
+          <Input type="text" placeholder="0000" onChange={(value) => FromToHandler("to", value)} />
         </div>
         {bunchGeneratedSzonyegek.length} darab
 
