@@ -19,6 +19,7 @@ export default function IndexKep({ value }: { value: { kepekSzama: number, cikks
     return (
         <img
             src={image}
+            style={{maxHeight:80}}
             onError={({ currentTarget }) => {
                 currentTarget.onerror = null; // prevents looping
                 currentTarget.src = CartpetError;
