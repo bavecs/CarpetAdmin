@@ -59,9 +59,73 @@ export default function Table({szonyegekJson}: {szonyegekJson: SzonyegInterface[
     return columns as ColumnInterface[]
   }
 
+
+  function automation(keyChange: keyof SzonyegInterface, newValue: any, szonyeg: SzonyegInterface) {
+
+    switch (keyChange) {
+      case "cikkszam":
+        if(newValue.indexOf("G") > -1) {
+
+          return {
+            ...szonyeg,
+            gepi: true,
+            keszites: "Gépi",
+            categories: ["Gépi szőnyegek", "• Legnépszerűbbek"],
+            anyag: ["Műszál"],
+          }
+
+        }
+        if(newValue.indexOf("G") === -1 && szonyeg.title.toLowerCase().indexOf("kelim") === -1) {
+
+          return {
+            ...szonyeg,
+            gepi: false,
+            keszites: "Kézi",
+            categories: ["Kézi csomózás", "• Legnépszerűbbek"],
+            anyag: ["Gyapjú"],
+          }
+
+        }
+        break;
+      case "title":
+        if(szonyeg.title.toLowerCase().indexOf("kelim") > -1) {
+          return {
+            ...szonyeg,
+            gepi: false,
+            keszites: "Kézi Szőttes",
+            categories: ["Kelimek(kézi szőttes)", "• Legnépszerűbbek"],
+            anyag: ["Gyapjú"],
+            szarmazasiHely: "Afganisztán",
+            csomoszam: 0
+          }
+        }
+        break;
+      default:
+        return szonyeg
+        break;
+
+    }
+  }
+
+
+
   function editSzonyeg(id: number, editedValues: SzonyegInterface) {
+
     setSzonyegek(
-      szonyegek.map(szonyeg => szonyeg.id === id ? editedValues : szonyeg)
+
+      szonyegek.map(szonyeg => {
+        if (szonyeg.id === id) {
+          let key: string
+          for (key of Object.keys(szonyeg)) {
+            const automatedPart = automation(key as keyof SzonyegInterface, editedValues[key as keyof SzonyegInterface] as any, editedValues);
+            editedValues = { ...editedValues, ...automatedPart };
+          }
+          return editedValues
+        }
+        else return szonyeg
+      })
+
+
     )
   }
 

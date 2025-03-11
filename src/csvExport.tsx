@@ -1,6 +1,7 @@
 import { useGlobalData } from "./components/GlobalDataContext";
 import SzonyegInterface from "./components/interfaces/SzonyegInterface";
 import getImages from "./lib/getPhotoUrls";
+import getSize from "./lib/getSize";
 import { quotedString, wooStringArray } from "./lib/stringTools";
 
 const oszlopok = {
@@ -49,14 +50,14 @@ export default function CSVExport(szonyegek:SzonyegInterface[], imageFolderUrl:s
             "col_2": quotedString(szonyeg.description),
             "col_3": szonyeg.cikkszam,
             "col_4": szonyeg.price,
-            "col_5": szonyeg.discountPrice,
+            "col_5": szonyeg.price / 2,
             "col_6": wooStringArray(szonyeg.alak),
             "col_7": szonyeg.allapot,
             "col_8": wooStringArray(szonyeg.anyag),
             "col_9": wooStringArray(szonyeg.alak),
             "col_10": szonyeg.keszites,
             "col_11": szonyeg.keszites,
-            "col_12": "Meret",
+            "col_12": getSize(szonyeg.width, szonyeg.height),
             "col_13": szonyeg.szarmazasiHely,
             "col_14": wooStringArray(szonyeg.szin),
             "col_15": wooStringArray(images),
