@@ -8,6 +8,7 @@ import SelectCell from "./cells/SelectCell"
 import IndexKep from "./cells/IndexKep"
 import { IconButton } from "rsuite"
 import TrashIcon from '@rsuite/icons/Trash';
+import { useEffect } from "react"
 
 
 interface RowProps {
@@ -39,6 +40,7 @@ export default function Row({ ActiveColumns, Szonyeg, edit, remove }: RowProps) 
   
         return Szonyeg[collSrc] as string | number | string[]
     }
+
 
     function generateCell(column: ColumnInterface) {
         switch (column.component) {

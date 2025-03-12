@@ -1,4 +1,4 @@
-KARIBIvsc
+Kabirivsc
 
-Termék űrlap kitöltést megkönnyítő segédeszköz a Karibi Szőnyegház részére.
+Termék űrlap kitöltést megkönnyítő segédeszköz a Kabiri Szőnyegház részére.
 

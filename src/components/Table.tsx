@@ -38,7 +38,7 @@ const emptySzonyeg: SzonyegInterface =
 }
 
 
-export default function Table({szonyegekJson}: {szonyegekJson: SzonyegInterface[]}) {
+export default function Table({ szonyegekJson }: { szonyegekJson: SzonyegInterface[] }) {
 
   const [openGenModal, setOpenGenModal] = useState(false);
 
@@ -64,7 +64,7 @@ export default function Table({szonyegekJson}: {szonyegekJson: SzonyegInterface[
 
     switch (keyChange) {
       case "cikkszam":
-        if(newValue.indexOf("G") > -1) {
+        if (newValue.indexOf("G") > -1) {
 
           return {
             ...szonyeg,
@@ -75,7 +75,7 @@ export default function Table({szonyegekJson}: {szonyegekJson: SzonyegInterface[
           }
 
         }
-        if(newValue.indexOf("G") === -1 && szonyeg.title.toLowerCase().indexOf("kelim") === -1) {
+        if (newValue.indexOf("G") === -1 && szonyeg.title.toLowerCase().indexOf("kelim") === -1) {
 
           return {
             ...szonyeg,
@@ -86,9 +86,10 @@ export default function Table({szonyegekJson}: {szonyegekJson: SzonyegInterface[
           }
 
         }
+        return szonyeg
         break;
       case "title":
-        if(szonyeg.title.toLowerCase().indexOf("kelim") > -1) {
+        if (szonyeg.title.toLowerCase().indexOf("kelim") > -1) {
           return {
             ...szonyeg,
             gepi: false,
@@ -99,35 +100,34 @@ export default function Table({szonyegekJson}: {szonyegekJson: SzonyegInterface[
             csomoszam: 0
           }
         }
+        return szonyeg
         break;
       default:
         return szonyeg
-        break;
 
     }
   }
 
 
 
+
+
   function editSzonyeg(id: number, editedValues: SzonyegInterface) {
+    const autoTransformedSzonyegek = (szonyeg: SzonyegInterface) => {
+      let transformed = { ...editedValues }; // Mindig új objektumot hozzunk létre
+      for (const key of Object.keys(szonyeg)) {
+        transformed = automation(key as keyof SzonyegInterface, transformed[key as keyof SzonyegInterface] as any, transformed);
+      }
+      return transformed;
+    };
 
-    setSzonyegek(
+    const newSzonyegArray = szonyegek.map(szonyeg =>
+      szonyeg.id === id ? autoTransformedSzonyegek(szonyeg) : szonyeg
+    );
 
-      szonyegek.map(szonyeg => {
-        if (szonyeg.id === id) {
-          let key: string
-          for (key of Object.keys(szonyeg)) {
-            const automatedPart = automation(key as keyof SzonyegInterface, editedValues[key as keyof SzonyegInterface] as any, editedValues);
-            editedValues = { ...editedValues, ...automatedPart };
-          }
-          return editedValues
-        }
-        else return szonyeg
-      })
-
-
-    )
+    setSzonyegek([...newSzonyegArray]); // Biztosítsd az új referencia létrehozását
   }
+
 
   function removeSzonyeg(id: number) {
     setSzonyegek(szonyegek.filter(szonyeg => szonyeg.id !== id))
@@ -210,22 +210,26 @@ export default function Table({szonyegekJson}: {szonyegekJson: SzonyegInterface[
 
       let newSzonyeg = emptySzonyeg
 
-      if(bunchFromTo.gepi) {
-        newSzonyeg = { ...newSzonyeg,
+      if (bunchFromTo.gepi) {
+        newSzonyeg = {
+          ...newSzonyeg,
           gepi: bunchFromTo.gepi,
           keszites: "Gépi",
           categories: ["Gépi szőnyegek", "• Legnépszerűbbek"],
           anyag: ["Műszál"],
           cikkszam: cikkszam,
-          id: newId() + i }
+          id: newId() + i
+        }
       } else {
-        newSzonyeg = { ...newSzonyeg,
+        newSzonyeg = {
+          ...newSzonyeg,
           gepi: bunchFromTo.gepi,
           keszites: "Kézi",
           categories: ["Kézi csomózású", "• Legnépszerűbbek"],
           anyag: ["Gyapjú"],
           cikkszam: cikkszam,
-          id: newId() + i }
+          id: newId() + i
+        }
       }
 
 
@@ -245,16 +249,16 @@ export default function Table({szonyegekJson}: {szonyegekJson: SzonyegInterface[
   const tableWrapperRef = useRef(null);
 
 
-/*   function horizontalScoll(e: any) {
-    let tw = document.querySelector("#tableWrapper")
-    if (!tw) return
-    if(e.deltaY < 0) {
-      
-      tw.scrollLeft -=30
-    } else {
-      tw.scrollLeft +=30
-    }
-  } */
+  /*   function horizontalScoll(e: any) {
+      let tw = document.querySelector("#tableWrapper")
+      if (!tw) return
+      if(e.deltaY < 0) {
+        
+        tw.scrollLeft -=30
+      } else {
+        tw.scrollLeft +=30
+      }
+    } */
 
 
 

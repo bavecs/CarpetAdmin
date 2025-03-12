@@ -9,7 +9,9 @@ export default function SelectCell({ value, onChange, options }: { value: ValueT
     const [CellValue, setCellValue] = useState(value)
 
     useEffect(() => {
+        console.log("new value")
         onChange(CellValue)
+
     }, [CellValue])
 
     return (
