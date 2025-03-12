@@ -12,7 +12,7 @@ import { useEffect, useState } from "react"
 
                 onChange={e => setCellValue(e.target.value)}
 
-                value={CellValue}
+                value={value}
                 className=" !text-black focus:border-sky-200 focus:outline focus:outline-sky-200  block w-full px-1 py-3" />
 
     )

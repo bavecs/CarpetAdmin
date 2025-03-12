@@ -16,7 +16,7 @@ export default function SelectCell({ value, onChange, options }: { value: ValueT
 
     return (
        
-            <SelectPicker data={SelectList as any} block style={{ width: "100%"}} value={CellValue} placeholder="Válassz" size="sm" cleanable={false}  onChange={value => setCellValue(value as ValueType)} />
+            <SelectPicker data={SelectList as any} block style={{ width: "100%"}} value={value} placeholder="Válassz" size="sm" cleanable={false}  onChange={value => setCellValue(value as ValueType)} />
 
     )
 }

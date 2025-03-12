@@ -14,7 +14,7 @@ import { TagPicker } from "rsuite"
     return (
 
     
-            <TagPicker data={TagList} value={CellValue} placeholder="Válassz..." size="sm" style={{ width: "100%", maxHeight: 100, overflowX: "hidden", overflowY: "auto" }} cleanable={false} block onChange={e => setCellValue(e)} />
+            <TagPicker data={TagList} value={value} placeholder="Válassz..." size="sm" style={{ width: "100%", maxHeight: 100, overflowX: "hidden", overflowY: "auto" }} cleanable={false} block onChange={e => setCellValue(e)} />
 
 
     )
