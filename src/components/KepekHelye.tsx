@@ -29,11 +29,11 @@ export default function KepekHelye() {
 
 
     return <>
-        <InputGroup inside className="items-center">
+        <InputGroup inside className="items-center mt-2">
             <InputGroup.Addon>
                 Képek mappája:
             </InputGroup.Addon>
-            {globalData.url}/
+            {urlPre}/
             <InlineEdit showControls={false} style={{ fontWeight: "bold", cursor: "pointer" }} onChange={setYear} value={year}>
                 <InputPicker data={years} style={{ fontWeight: "bold" }} cleanable={false} />
             </InlineEdit>

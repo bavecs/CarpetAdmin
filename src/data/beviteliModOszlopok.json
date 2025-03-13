@@ -5,11 +5,11 @@
     },
     {
       "label": "Szőnyeg adatok",
-      "value": [1, 2, 3, 5, 6, 8, 14, 9, 11, 15]
+      "value": [1, 2, 3, 5, 6, 8, 14, 9, 15]
     },
     {
-      "label": "Összes oszlop",
-      "value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+      "label": "Kategorizálás",
+      "value": [1, 2, 3, 11]
     }
   ]
 

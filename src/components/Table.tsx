@@ -100,6 +100,15 @@ export default function Table({ szonyegekJson }: { szonyegekJson: SzonyegInterfa
             csomoszam: 0
           }
         }
+        if (szonyeg.title.toLowerCase().indexOf("vegyes") > -1) {
+          return {
+            ...szonyeg,
+            gepi: false,
+            keszites: "Vegyes",
+            categories: ["Vegyes technika", "• Legnépszerűbbek"],
+            anyag: ["Vegyes", "Műszál"]
+          }
+        }
         return szonyeg
         break;
       default:

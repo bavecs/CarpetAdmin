@@ -4,6 +4,7 @@ import KepekHelye from './components/KepekHelye'
 import Table from './components/Table'
 import feltoltes from "./data/feltoltes.json";
 import { GlobalDataProvider } from './components/GlobalDataContext';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
       </GlobalDataProvider>
 
 
-
+    <Footer />
 
       
 

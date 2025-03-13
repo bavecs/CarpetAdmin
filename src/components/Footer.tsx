@@ -2,13 +2,13 @@
 
 export default function Footer() {
 
-    return <div id="footer" className="w-full p-4 bg-white border-t border-gray-200 md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600">
+    return <div id="footer" className="w-full p-3 bg-white border-t border-gray-200 md:flex md:items-center md:justify-between md:p-6 ">
 
-        <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+        <span className="text-sm text-gray-500 sm:text-center ">
             Készítette: Vécsei Balázs | © 2025 Budapest | balazs.vecsei@gmail.com
         </span>
-        <span>Verzió: Beta 1.0</span>
-        <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+        <span>Verzió: Beta 1.1</span>
+        <ul className="flex flex-wrap items-center text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
             <li>
                 <a href="mailto:balazs.vecsei@gmail.com" className="hover:underline me-4 md:me-6">E-mail</a>
             </li>
