@@ -7,7 +7,7 @@ export default function Footer() {
         <span className="text-sm text-gray-500 sm:text-center ">
             Készítette: Vécsei Balázs | © 2025 Budapest | balazs.vecsei@gmail.com
         </span>
-        <span>Verzió: Beta 1.1</span>
+        <span>Verzió: Beta 1.2</span>
         <ul className="flex flex-wrap items-center text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
             <li>
                 <a href="mailto:balazs.vecsei@gmail.com" className="hover:underline me-4 md:me-6">E-mail</a>

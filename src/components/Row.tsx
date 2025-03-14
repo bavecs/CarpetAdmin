@@ -8,7 +8,6 @@ import SelectCell from "./cells/SelectCell"
 import IndexKep from "./cells/IndexKep"
 import { IconButton } from "rsuite"
 import TrashIcon from '@rsuite/icons/Trash';
-import { useEffect } from "react"
 
 
 interface RowProps {
