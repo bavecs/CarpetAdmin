@@ -71,7 +71,6 @@ export default function Table({ szonyegekJson }: { szonyegekJson: SzonyegInterfa
             gepi: true,
             keszites: "Gépi",
             categories: ["Gépi szőnyegek", "• Legnépszerűbbek"],
-            anyag: ["Műszál"],
           }
 
         }
@@ -123,7 +122,7 @@ export default function Table({ szonyegekJson }: { szonyegekJson: SzonyegInterfa
 
   function editSzonyeg(id: number, editedValues: SzonyegInterface) {
     const autoTransformedSzonyegek = (szonyeg: SzonyegInterface) => {
-      let transformed = { ...editedValues }; // Mindig új objektumot hozzunk létre
+      let transformed = { ...editedValues }
       for (const key of Object.keys(szonyeg)) {
         transformed = automation(key as keyof SzonyegInterface, transformed[key as keyof SzonyegInterface] as any, transformed);
       }
@@ -134,7 +133,7 @@ export default function Table({ szonyegekJson }: { szonyegekJson: SzonyegInterfa
       szonyeg.id === id ? autoTransformedSzonyegek(szonyeg) : szonyeg
     );
 
-    setSzonyegek([...newSzonyegArray]); // Biztosítsd az új referencia létrehozását
+    setSzonyegek([...newSzonyegArray]); 
   }
 
 
