@@ -13,8 +13,8 @@ export default interface SzonyegInterface {
     "szin": string[],
     "kepekSzama": number,
     "categories": string[],
-    "width": number,
-    "height": number,
+    "width": number | null,
+    "height": number | null,
     "gepi": boolean,
     "futo": boolean,
     "csomoszam": number

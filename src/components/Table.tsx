@@ -30,8 +30,8 @@ const emptySzonyeg: SzonyegInterface =
   "szin": [],
   "kepekSzama": 6,
   "categories": ["• Legnépszerűbbek"],
-  "width": 0,
-  "height": 0,
+  "width": null,
+  "height": null,
   "gepi": false,
   "futo": false,
   "csomoszam": 0
