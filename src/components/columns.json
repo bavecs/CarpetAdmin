@@ -103,7 +103,7 @@
         "type": "string",
         "dataSrc": "szin",
         "component": "TagCell",
-        "options": ["bézs", "fekete", "fehér", "natúr", "piros", "kék", "zöld", "barna", "bordó", "szürke", "türkiz", "sárga", "narancs", "moha", "arany"]
+        "options": ["bézs", "fekete", "fehér", "natúr", "piros", "kék", "zöld", "barna", "bordó", "szürke", "türkiz", "sárga", "narancs", "moha", "arany", "rózsaszín", "barackvirág", "lila", "lazacszín", "mályvaszín", "azúrkék"]
     },
     {
         "id": 14,
