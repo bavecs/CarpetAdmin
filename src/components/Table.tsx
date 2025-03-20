@@ -81,7 +81,6 @@ export default function Table({ szonyegekJson }: { szonyegekJson: SzonyegInterfa
             gepi: false,
             keszites: "Kézi",
             categories: ["Kézi csomózás", "• Legnépszerűbbek"],
-            anyag: ["Gyapjú"],
           }
 
         }

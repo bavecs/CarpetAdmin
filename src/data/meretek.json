@@ -1,31 +1,31 @@
 [
     {
         "name": "XS - Extra kicsi" ,
-        "intervals": " (<100 x 60 cm)",
+        "woocom_format": "XS - Extra kicsi (<100 x 60 cm)",
         "szelesseg": {"min": 0, "max": 75},
         "hosszusag": {"min": 0, "max": 60}
     },
     {
         "name": "S - Kicsi",
-        "intervals": "(80-110 x 120-180 cm)",
+        "woocom_format": "S - Kicsi (80-110 x 120-180 cm)",
         "szelesseg": {"min": 76, "max": 110},
         "hosszusag": {"min": 100, "max": 180}
     },
     {
         "name": "M - Közepes",
-        "intervals": "(120-160 x 200-240 cm)",
+        "woocom_format": "M - Közepes (120-160 x 200-240 cm)",
         "szelesseg": {"min": 110, "max": 160},
         "hosszusag": {"min": 160, "max": 270}
     },
     {
         "name": "L - Nagy",
-        "intervals": "(180-220 x 270-330 cm)",
+        "woocom_format": "L - Nagy (180-220 x 270-330 cm)",
         "szelesseg": {"min": 160, "max": 220},
         "hosszusag": {"min": 220, "max": 330}
     },
     {
-        "name": "XL - Extra nagy (> 240 x 350 cm)",
-        "intervals": "(> 240 x 350 cm)",
+        "name": "XL - Extra nagy",
+        "woocom_format": "XL - Extra nagy (> 240 x 350 cm)",
         "szelesseg": {"min": 221, "max": 999},
         "hosszusag": {"min": 300, "max": 999}
     }

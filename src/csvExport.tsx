@@ -57,7 +57,7 @@ export default function CSVExport(szonyegek:SzonyegInterface[], imageFolderUrl:s
             "col_9": wooStringArray(szonyeg.alak),
             "col_10": wooStringArray(szonyeg.keszites),
             "col_11": wooStringArray(szonyeg.keszites),
-            "col_12": getSize(szonyeg.width, szonyeg.height),
+            "col_12": getSize(szonyeg.width, szonyeg.height, true),
             "col_13": szonyeg.szarmazasiHely,
             "col_14": wooStringArray(szonyeg.szin),
             "col_15": wooStringArray(images),
