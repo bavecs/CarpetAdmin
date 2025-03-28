@@ -33,6 +33,8 @@ const oszlopok = {
 
 export default function CSVExport(szonyegek:SzonyegInterface[], imageFolderUrl:string) {
 
+    let valid = true
+
 
     let finalSzonyegArray:any[] = []
 
@@ -43,7 +45,16 @@ export default function CSVExport(szonyegek:SzonyegInterface[], imageFolderUrl:s
     }
 
     szonyegek.forEach((szonyeg) => {
+        
+        if(szonyeg.width === null || szonyeg.height === null) {
+            alert(szonyeg.cikkszam + " cikkszám alatti szőnyeg méretei nincsenek kitöltve")
+            valid = false
+            return
+        }
+        
         let images = getImages(szonyeg.kepekSzama, imageFolderUrl, szonyeg.cikkszam)
+
+        
 
         let finalSzonyeg = {
             "col_1": quotedString(szonyeg.title),
@@ -75,6 +86,8 @@ export default function CSVExport(szonyegek:SzonyegInterface[], imageFolderUrl:s
             finalSzonyegArray = [...finalSzonyegArray,
                 Object.values(finalSzonyeg).join(",")]
     })
+
+    if (!valid) return
 
     let oszlopokArray = Object.values(oszlopok).join(",")
 

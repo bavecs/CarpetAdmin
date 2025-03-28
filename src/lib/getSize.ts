@@ -28,7 +28,7 @@ const fInMatrix = (ar: meretType[], w: number, h: number) => ar.find(m =>
 );
 
 
-const getSize = (szelesseg: number, hosszusag: number, toExport:boolean = false):string => {
+const getSize = (szelesseg: number, hosszusag: number , toExport:boolean = false):string => {
     if (szelesseg < 10 || szelesseg === undefined || hosszusag < 10 || hosszusag === undefined) return ""
 
     const objectKey: keyof meretType = toExport ? "woocom_format" : "name"

@@ -118,7 +118,6 @@ export default function Table({ szonyegekJson }: { szonyegekJson: SzonyegInterfa
 
 
 
-
   function editSzonyeg(id: number, editedValues: SzonyegInterface) {
     const autoTransformedSzonyegek = (szonyeg: SzonyegInterface) => {
       let transformed = { ...editedValues }
