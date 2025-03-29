@@ -98,13 +98,19 @@ export default function Table({ szonyegekJson }: { szonyegekJson: SzonyegInterfa
             csomoszam: 0
           }
         }
+        if (szonyeg.title.toLowerCase().indexOf("afgán") > -1) {
+          return {
+            ...szonyeg,
+            szarmazasiHely: "Afganisztán",
+          }
+        }
         if (szonyeg.title.toLowerCase().indexOf("vegyes") > -1) {
           return {
             ...szonyeg,
             gepi: false,
             keszites: "Vegyes",
             categories: ["Vegyes technika", "• Legnépszerűbbek"],
-            anyag: ["Vegyes", "Műszál"]
+            anyag: ["Vegyes", "Gyapjú"]
           }
         }
         return szonyeg
@@ -116,22 +122,42 @@ export default function Table({ szonyegekJson }: { szonyegekJson: SzonyegInterfa
   }
 
 
+  type valueKeyType = null | keyof SzonyegInterface
 
-
-  function editSzonyeg(id: number, editedValues: SzonyegInterface) {
+  function editSzonyeg(id: number, editedValues: SzonyegInterface, valueKey: valueKeyType = null, automatAll: boolean = false) {
     const autoTransformedSzonyegek = (szonyeg: SzonyegInterface) => {
       let transformed = { ...editedValues }
       for (const key of Object.keys(szonyeg)) {
         transformed = automation(key as keyof SzonyegInterface, transformed[key as keyof SzonyegInterface] as any, transformed);
       }
       return transformed;
-    };
+    }
 
-    const newSzonyegArray = szonyegek.map(szonyeg =>
-      szonyeg.id === id ? autoTransformedSzonyegek(szonyeg) : szonyeg
-    );
 
-    setSzonyegek([...newSzonyegArray]); 
+    if (automatAll) {
+      const newSzonyegArray = szonyegek.map(szonyeg =>
+        szonyeg.id === id ? autoTransformedSzonyegek(szonyeg) : szonyeg
+      );
+
+      setSzonyegek([...newSzonyegArray]);
+
+      return
+
+    }
+
+    if (valueKey) {
+      let transformed = automation(valueKey, editedValues[valueKey], editedValues)
+
+      setSzonyegek([
+        ...szonyegek.map(szonyeg => szonyeg.id === id ? transformed : szonyeg)
+      ])
+
+    } else {
+      setSzonyegek([
+        ...szonyegek.map(szonyeg => szonyeg.id === id ? editedValues : szonyeg)
+      ])
+    }
+
   }
 
 

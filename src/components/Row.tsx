@@ -13,7 +13,7 @@ import TrashIcon from '@rsuite/icons/Trash';
 interface RowProps {
     ActiveColumns: Array<ColumnInterface>,
     Szonyeg: SzonyegInterface,
-    edit(id: number, editedValues: SzonyegInterface): any,
+    edit(id: number, editedValues: SzonyegInterface, valueKey?: any): any,
     remove(id: number): any
 }
 
@@ -54,34 +54,29 @@ export default function Row({ ActiveColumns, Szonyeg, edit, remove }: RowProps) 
             case "TagCell":
                 return <TagCell value={getVal(column.dataSrc) as any} key={column.id} onChange={
                     (val: SzonyegInterface) =>
-                        edit(Szonyeg.id, { ...Szonyeg, [column.dataSrc as keyof SzonyegInterface]: val }
-                        )
+                        edit(Szonyeg.id, { ...Szonyeg, [column.dataSrc as keyof SzonyegInterface]: val } )
                 }
                 options={column.options ?? []}
                 />
             case "IndexKep":
                 return <IndexKep value={getVal(column.dataSrc) as any} key={column.id} onChange={
                     (val: SzonyegInterface) =>
-                        edit(Szonyeg.id, { ...Szonyeg, title: val.title, description: val.description }
-                        )
+                        edit(Szonyeg.id, { ...Szonyeg, title: val.title, description: val.description } )
                 } />
             case "TitleCell":
                 return <TitleCell value={getVal(column.dataSrc) as any} key={column.id} onChange={
                     (val: SzonyegInterface) =>
-                        edit(Szonyeg.id, { ...Szonyeg, title: val.title, description: val.description }
-                        )
+                        edit(Szonyeg.id, { ...Szonyeg, title: val.title, description: val.description }, "title")
                 } />
             case "SizeCell":
                 return <SizeCell value={getVal(column.dataSrc) as any} key={column.id} onChange={
                     (val: SzonyegInterface) =>
-                        edit(Szonyeg.id, { ...Szonyeg, width: val.width, height: val.height }
-                        )
+                        edit(Szonyeg.id, { ...Szonyeg, width: val.width, height: val.height })
                 } />
             default:
                 return <Cell value={getVal(column.dataSrc) as any} key={column.id} onChange={
                     (val: SzonyegInterface) =>
-                        edit(Szonyeg.id, { ...Szonyeg, [column.dataSrc as keyof SzonyegInterface]: val }
-                        )
+                        edit(Szonyeg.id, { ...Szonyeg, [column.dataSrc as keyof SzonyegInterface]: val }, column.dataSrc)
                 } />
 
         }
