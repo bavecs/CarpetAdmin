@@ -29,7 +29,7 @@ const emptySzonyeg: SzonyegInterface =
   "szarmazasiHely": "",
   "szin": [],
   "kepekSzama": 6,
-  "categories": ["• Legnépszerűbbek", "Kézi csomózás"],
+  "categories": ["Kézi csomózás", "• Legnépszerűbbek"],
   "width": null,
   "height": null,
   "gepi": false,
