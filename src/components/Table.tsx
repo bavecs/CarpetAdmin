@@ -29,7 +29,7 @@ const emptySzonyeg: SzonyegInterface =
   "szarmazasiHely": "",
   "szin": [],
   "kepekSzama": 6,
-  "categories": ["• Legnépszerűbbek"],
+  "categories": ["• Legnépszerűbbek", "Kézi csomózás"],
   "width": null,
   "height": null,
   "gepi": false,
@@ -317,8 +317,8 @@ export default function Table({ szonyegekJson }: { szonyegekJson: SzonyegInterfa
       <Modal.Body>
         <p className="mb-2">Szőnyeg generálás, első és utolsó címkeazonosító megadásával.</p>
         <div className="flex items-center my-3 ">
-          <Input type="text" placeholder="0000" onChange={(value) => FromToHandler("from", value)} /><span>-</span>
-          <Input type="text" placeholder="0000" onChange={(value) => FromToHandler("to", value)} />
+          <Input type="text" placeholder="0000" onChange={(value:any) => FromToHandler("from", value)} /><span>-</span>
+          <Input type="text" placeholder="0000" onChange={(value:any) => FromToHandler("to", value)} />
         </div>
         {bunchGeneratedSzonyegek.length} darab
 
