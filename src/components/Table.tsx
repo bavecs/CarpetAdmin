@@ -257,7 +257,7 @@ export default function Table({ szonyegekJson }: { szonyegekJson: SzonyegInterfa
           ...newSzonyeg,
           gepi: bunchFromTo.gepi,
           keszites: "Kézi",
-          categories: ["Kézi csomózású", "• Legnépszerűbbek"],
+          categories: ["Kézi csomózás", "• Legnépszerűbbek"],
           anyag: ["Gyapjú"],
           cikkszam: cikkszam,
           id: newId() + i
