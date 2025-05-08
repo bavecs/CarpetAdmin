@@ -28,17 +28,20 @@ const fInMatrix = (ar: meretType[], w: number, h: number) => ar.find(m =>
 
 const getSize = (szelesseg: number, hosszusag: number , toExport:boolean = false):string => {
 
+    if (szelesseg < 10 || szelesseg === undefined || hosszusag < 10 || hosszusag === undefined) return ""
+
+
     //Szélességet ötösre felkerekítés
     szelesseg = Math.ceil(szelesseg / 5) * 5
 
     //hosszuságot 10-esre kerekítés
     hosszusag = Math.round(hosszusag / 10) * 10;
 
-    if (szelesseg < 10 || szelesseg === undefined || hosszusag < 10 || hosszusag === undefined) return ""
 
     const objectKey: keyof meretType = toExport ? "woocom_format" : "name"
     let meret: meretType | undefined 
 
+    //Futó ellenőrzés
     if (szelesseg > 40 && szelesseg < 110) {
         meret = fInMatrix(futoMeretek, szelesseg, hosszusag)
 
@@ -46,9 +49,10 @@ const getSize = (szelesseg: number, hosszusag: number , toExport:boolean = false
             return meret[objectKey] 
     } 
 
+    //Hagyományos szőnyeg ellenőrzés
     meret = fInMatrix(meretek, szelesseg, hosszusag)
 
-    return meret ? meret[objectKey] : 'Nincs megfelelő méret';
+    return meret ? meret[objectKey] : 'Egyéb méret';
 
 }
 
