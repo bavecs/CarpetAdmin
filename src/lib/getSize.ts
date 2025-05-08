@@ -11,14 +11,12 @@ const futoMeretek: meretType[] = [
     {
         "name": "Futó S - Kicsi",
         "woocom_format": "Futó S - Kicsi (50-75 x 150-350 cm)",
-        "szelesseg": {"min": 40, "max": 80},
-        "hosszusag": {"min": 150, "max": 180}
+        "szelesseg": {"min": 40, "max": 80}, "hosszusag": {"min": 150, "max": 180}
     },
     {
         "name": "Futó M-L",
         "woocom_format": "Futó M-L – Kicsi (75-100 x 180-650 cm)",
-        "szelesseg": {"min": 80, "max": 110},
-        "hosszusag": {"min": 181, "max": 99999}
+        "szelesseg": {"min": 80, "max": 110}, "hosszusag": {"min": 181, "max": 99999}
     },
 ]
 
@@ -29,6 +27,13 @@ const fInMatrix = (ar: meretType[], w: number, h: number) => ar.find(m =>
 
 
 const getSize = (szelesseg: number, hosszusag: number , toExport:boolean = false):string => {
+
+    //Szélességet ötösre felkerekítés
+    szelesseg = Math.ceil(szelesseg / 5) * 5
+
+    //hosszuságot 10-esre kerekítés
+    hosszusag = Math.round(hosszusag / 10) * 10;
+
     if (szelesseg < 10 || szelesseg === undefined || hosszusag < 10 || hosszusag === undefined) return ""
 
     const objectKey: keyof meretType = toExport ? "woocom_format" : "name"
