@@ -77,7 +77,7 @@ export default function CSVExport(szonyegek:SzonyegInterface[], imageFolderUrl:s
             "col_18": szonyeg.height,
             "col_19": szonyeg.csomoszam,
             "col_20": wooStringArray(szonyeg.title),
-            "col_21": szonyeg.width * szonyeg.height / 10000,
+            "col_21": Math.round((szonyeg.width * szonyeg.height / 10000) * 100) / 100,
             "col_22": 'a:3:{i:0;s:5:"15002";i:1;s:5:"15077";i:2;s:5:"15079";}',
             "col_23": "",
             "col_24": ""
